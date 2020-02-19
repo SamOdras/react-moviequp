@@ -1,11 +1,14 @@
 import React from "react";
 import "./side-menu.styles.scss";
-import { Typography, Icon, ButtonBase } from "@material-ui/core";
+import { Typography, Icon, ButtonBase, Badge } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Dashboard, FavoriteBorder } from "@material-ui/icons";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectTotalFavorite } from '../../redux/favorite/favorite.selector';
 
-const SideMenu =({ history })=> {
+const SideMenu = ({ history, totalFavorite }) => {
   const renderButton = () => {
     return (
       <ButtonBase
@@ -46,7 +49,9 @@ const SideMenu =({ history })=> {
             history.location.pathname === "/movie/favorite" ? "active" : ""
           }`}
         >
-          <FavoriteBorder className="side-menu--item__icon" />
+          <Badge badgeContent={totalFavorite} color="secondary">
+            <FavoriteBorder className="side-menu--item__icon" />
+          </Badge>
           <Typography variant="h5" className="side-menu--item__title">
             Favorite
           </Typography>
@@ -57,4 +62,8 @@ const SideMenu =({ history })=> {
   );
 };
 
-export default withRouter(SideMenu);
+const HOC = withRouter(SideMenu);
+const mapStateToProps = createStructuredSelector({
+  totalFavorite: selectTotalFavorite
+})
+export default connect(mapStateToProps)(HOC);

@@ -1,24 +1,31 @@
 import React from "react";
 import "./movie-details.styles.scss";
 import Banner from "../../assets/Poster-1.jpg";
-import { Typography, FormControlLabel, Checkbox } from "@material-ui/core";
-import { Favorite, FavoriteBorder } from "@material-ui/icons";
+import { Typography } from "@material-ui/core";
+
+import { connect } from "react-redux";
+import { toogleItem } from "../../redux/favorite/favorite.actions";
+import FavoriteButton from '../favorite-button/favorite-button.component';
 
 class MovieDetails extends React.Component {
+  handleClick = () => {
+    const { toogleFavorite, dataId } = this.props;
+    const data = {
+      title: "Star Wars Battle Front",
+      image: Banner,
+      id: dataId || 'testId'
+    };
+    toogleFavorite(data);
+  };
   render() {
     return (
       <div className="movie-details-container">
         <div className="header-container">
           <div className="banner-wrapper">
-            <FormControlLabel
+            <FavoriteButton
+              handleFavorite={this.handleClick}
               className="header-container__icon-banner"
-              control={
-                <Checkbox
-                  icon={<FavoriteBorder style={{ color: "white" }} />}
-                  checkedIcon={<Favorite />}
-                  value="checkedH"
-                />
-              }
+              color="white"
             />
             <img
               src={Banner}
@@ -92,4 +99,8 @@ class MovieDetails extends React.Component {
   }
 }
 
-export default MovieDetails;
+const mapDispatchToProps = dispatch => ({
+  toogleFavorite: item => dispatch(toogleItem(item))
+})
+
+export default connect(null, mapDispatchToProps)(MovieDetails);
