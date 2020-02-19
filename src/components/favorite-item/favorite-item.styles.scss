@@ -1,0 +1,31 @@
+.movie-card{
+  display: flex;
+  flex-direction: column;
+  margin-right: 2px;
+  margin-bottom: 20px;
+  position: relative;
+  &__banner{
+    height: 350px;
+    border-radius: 10px;
+    transition: all .2s;
+    z-index: 10;
+    cursor: pointer;
+    &:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px 5px rgba(0,0,0,.3);
+      transform: scale(1.1);
+    }
+    &:active{
+      box-shadow: 0 2.5px 5px 5px rgba(0,0,0,.1);
+      transform: translateY(2px);
+    }
+  }
+  &__title{
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    &:last-child{
+      margin-left: 10px;
+    }
+  }
+}
