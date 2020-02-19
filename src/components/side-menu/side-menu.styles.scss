@@ -1,0 +1,31 @@
+.side-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &--item{
+    width: 90px;
+    height: 90px;
+    border-radius: 5px !important;
+    display: flex;
+    flex-direction: column;
+    &__title{
+      font-size: 13px !important;
+      margin-top: 5px !important;
+      font-weight: 300;
+      color: #5F6368;
+    }
+    &__icon{
+      color: #5F6368;
+    }
+    &:hover{
+      background-color: #f4f4f4;
+      opacity: .6;
+    }
+  }
+}
+.active{
+  background-color: #f4f4f4 !important;
+  opacity: .6;
+}

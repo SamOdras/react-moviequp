@@ -1,0 +1,35 @@
+.movie-details-container {
+  padding: 50px 0px 50px 90px;
+  .header-container {
+    display: flex;
+    justify-content: center;
+    &__banner {
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    &__stats {
+      width: 50%;
+      margin-left: 50px;
+      .stats-info {
+        margin-top: 20px;
+      }
+      .stats-score {
+        margin-top: 20px;
+        display: flex;
+        &__rating {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-right: 1px solid grey;
+          width: 100%;
+          padding: 0px 5px 0px 5px;
+          & > * {
+            padding-top: 10px;
+          }
+          &:first-child {
+            border-left: 1px solid grey;
+          }
+        }
+      }
+    }
+  }
+}

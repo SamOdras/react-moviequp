@@ -1,0 +1,14 @@
+.front-page-content{
+  display: flex;
+  padding: 65px 50px 0 0px;
+  &__side-menu{
+    height: 70vh;
+    width: 90px;
+    background-color: white;
+    position: fixed;
+  }
+  &__main-menu{
+    width: 100%;
+    margin-left: 100px;
+  }
+}

@@ -1,0 +1,128 @@
+@import './frame.base';
+* {
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+.page-login {
+  display: flex;
+  padding: 75px 50px 0px 150px;
+  height: 89vh;
+  background-image: url("../../assets/bg-3.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  overflow-y: hidden !important;
+  @include respond(big-desktop) {
+    background-image: none;
+  }
+  @include respond(phone) {
+    padding: 65px 70px 0px 75px;
+    justify-content: center;
+  }
+  .section-input {
+    display: flex;
+    flex-direction: column;
+    @include respond(phone) {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    &__logo {
+      display: flex;
+      flex-direction: column;
+      .logo-title {
+        font-weight: 400;
+        margin: 30px 0 60px 0;
+        line-height: 30px;
+        @include respond(tab-port) {
+          font-size: 16px;
+          margin: 35px 0 50px 0px;
+        }
+        @include respond(phone){
+          font-size: 23px;
+        }
+        &--1 {
+          letter-spacing: 2px;
+        }
+        &--2 {
+          letter-spacing: 2px;
+          color: #999;
+        }
+      }
+      .logo-img {
+        width: 230px;
+        @include respond(tab-port) {
+          width: 170px;
+        }
+        @include respond(phone){
+          width: 270px;
+        }
+
+      }
+    }
+    &__text-field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 120px;
+      .text-field--1 {
+        margin-bottom: 50px;
+        width: 300px;
+        @include respond(tab-port) {
+          width: 280px;
+          margin-bottom: 30px;
+          ::placeholder {
+            font-size: 16px;
+          }
+        }
+      }
+      .text-field--2 {
+        margin-bottom: 20px;
+        @include respond(tab-port) {
+          width: 280px;
+          ::placeholder {
+            font-size: 16px;
+          }
+        }
+      }
+      .btn-submit {
+        margin-top: 20px;
+        background-image: linear-gradient(to right bottom, #256ddf, #33cdb2);
+        border-radius: 20px;
+        width: 100px;
+        height: 37px;
+        @include respond(tab-land) {
+          font-size: 12px;
+        }
+        @include respond(tab-port) {
+          font-size: 10px;
+          width: 90px;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .section-img {
+    @include respond(big-desktop) {
+      width: 50%;
+    }
+    @include respond(tab-land) {
+      margin-top: 20px;
+      width: 100%;
+    }
+    @include respond(tab-port) {
+      margin-top: 50px;
+      width: 100%;
+    }
+    @include respond(phone) {
+      display: none;
+      width: 0;
+      margin: 0;
+    }
+    &__image {
+      width: 90%;
+      margin-left: 70px;
+    }
+  }
+}
