@@ -2,7 +2,8 @@ import React from "react";
 import "./movie-details.style.scss";
 import Frame from "../../components/frame/frame.component";
 import Banner from "../../assets/Poster-1.jpg";
-import { Typography } from "@material-ui/core";
+import { Typography, FormControlLabel, Checkbox } from "@material-ui/core";
+import { Favorite, FavoriteBorder } from "@material-ui/icons";
 
 class MovieDetails extends React.Component {
   render() {
@@ -10,10 +11,26 @@ class MovieDetails extends React.Component {
       <Frame>
         <div className="movie-details-container">
           <div className="header-container">
-            <img src={Banner} alt="Move Poster" className="header-container__banner" />
+            <div className="banner-wrapper">
+              <FormControlLabel
+                className="header-container__icon-banner"
+                control={
+                  <Checkbox
+                    icon={<FavoriteBorder style={{color:'white'}}/>}
+                    checkedIcon={<Favorite />}
+                    value="checkedH"
+                  />
+                }
+              />
+              <img
+                src={Banner}
+                alt="Move Poster"
+                className="header-container__banner"
+              />
+            </div>
             <div className="header-container__stats">
               <Typography className="stats-title" variant="h4">
-              Star Wars: Episode IV - A New Hope
+                Star Wars: Episode IV - A New Hope
               </Typography>
               <div className="stats-info">
                 <Typography variant="body1">

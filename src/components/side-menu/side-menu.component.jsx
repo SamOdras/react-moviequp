@@ -2,7 +2,7 @@ import React from "react";
 import "./side-menu.styles.scss";
 import { Typography, Icon, ButtonBase } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Dashboard } from "@material-ui/icons";
+import { Dashboard, FavoriteBorder } from "@material-ui/icons";
 import { withRouter } from 'react-router-dom';
 
 const SideMenu =({ history })=> {
@@ -36,6 +36,19 @@ const SideMenu =({ history })=> {
           <Dashboard className="side-menu--item__icon" />
           <Typography variant="h5" className="side-menu--item__title">
             Home
+          </Typography>
+        </ButtonBase>
+      </Link>
+      <Link to="/movie/favorite" style={{ textDecoration: "none" }}>
+        <ButtonBase
+          disableRipple={true}
+          className={`side-menu--item ${
+            history.location.pathname === "/movie/favorite" ? "active" : ""
+          }`}
+        >
+          <FavoriteBorder className="side-menu--item__icon" />
+          <Typography variant="h5" className="side-menu--item__title">
+            Favorite
           </Typography>
         </ButtonBase>
       </Link>

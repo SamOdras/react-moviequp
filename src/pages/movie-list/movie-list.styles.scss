@@ -3,16 +3,18 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 50px 0px 10px 10px;
-  position: relative;
   .movie-card{
     display: flex;
     flex-direction: column;
     margin-right: 2px;
     margin-bottom: 20px;
+    position: relative;
     &__banner{
       height: 350px;
       border-radius: 10px;
       transition: all .2s;
+      z-index: 10;
+      cursor: pointer;
       &:hover{
         transform: translateY(-5px);
         box-shadow: 0 5px 10px 5px rgba(0,0,0,.3);
@@ -24,7 +26,12 @@
       }
     }
     &__title{
-      text-align: center;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      &:last-child{
+        margin-left: 10px;
+      }
     }
   }
 }

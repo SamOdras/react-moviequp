@@ -34,7 +34,7 @@ const Header = props => {
             </IconButton>
             <div className="app-bar__title">
               <Typography
-                color="primary"
+                color="inherit"
                 variant="h6"
                 style={{ cursor: "pointer" }}
               >
