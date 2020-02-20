@@ -2,6 +2,7 @@ import Types from './movie.types';
 
 const INITIAL_STATE = {
   collections: null,
+  collectionDetail: null,
   isFetching: false,
   errorMessage: undefined
 };
@@ -18,6 +19,12 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         collections: action.payload
+      }
+    case Types.FETCH_DETAIL_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        collectionDetail: action.payload,
       }
     case Types.FETCH_FAILURE:
       return {
