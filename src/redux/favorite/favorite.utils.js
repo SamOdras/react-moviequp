@@ -1,13 +1,12 @@
 export const toogleItemToFavorite = (favoriteItem, favoriteItemToAdd) => {
-  const checkItem = favoriteItem.find(item => item.id === favoriteItemToAdd.id);
-  if(checkItem){
-    return favoriteItem.filter(item => item.id !== favoriteItemToAdd.id);
-  }
-  return [...favoriteItem, {...favoriteItemToAdd}];
+  const checkItem = favoriteItem.some(item => item.id === favoriteItemToAdd.id);
+  if(!checkItem){
+    return [...favoriteItem, favoriteItemToAdd]
+  };
+  return favoriteItem.filter(item => item.id !== favoriteItemToAdd.id);
 }
 
-export const checkItemFavorite = (favoriteItemId, incomingFavoriteId) => {
-  const checkItem = favoriteItemId.find(item => item.id === incomingFavoriteId.id);
-  if(!checkItem) return true;
-  return false;
+export const checkItemFavorite = (favoriteItem, favoriteItemToAdd) => {
+  const checkItem = favoriteItem.some(item => item.id === favoriteItemToAdd);
+  return checkItem;
 }

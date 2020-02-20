@@ -6,27 +6,30 @@ import { Typography } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import { toogleItem } from "../../redux/favorite/favorite.actions";
-import FavoriteButton from '../favorite-button/favorite-button.component';
+import RemoveFavoriteButton from '../favorite-button/favorite-remove-button.component';
 
 class FavoriteItem extends React.Component {
   handleClick = () => {
-    const { toogleFavorite, dataId } = this.props;
+    const { dataId, toogleFavorite, title, image } = this.props;
     const data = {
-      title: "Star Wars Battle Front",
-      image: Banner,
-      id: dataId
-    };
+      title,
+      image,
+      id:dataId,
+    }
     toogleFavorite(data);
-  };
+  }
+  
   render() {
     const { title, image } = this.props;
+    const splitTitle = title.split(' ');
     return (
       <div className="movie-card">
         <img src={image || Banner} alt="" className="movie-card__banner" />
         <Typography className="movie-card__title">
-          <span>{title || "Star Wars Battle Front"}</span>
-          <FavoriteButton
-            handleFavorite={this.handleClick}
+          <span style={{fontSize: '16px'}}>{`${splitTitle[0]} ${splitTitle[1]} ${splitTitle[2]} ...` || "Star Wars Battle Front"}</span>
+          <RemoveFavoriteButton
+            style={{marginLeft: 'auto'}}
+            handleClick={this.handleClick}
           />
         </Typography>
       </div>
@@ -35,6 +38,6 @@ class FavoriteItem extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  toogleFavorite: item => dispatch(toogleItem(item))
-})
+  toogleFavorite: item => dispatch(toogleItem(item)),
+});
 export default connect(null, mapDispatchToProps)(FavoriteItem);

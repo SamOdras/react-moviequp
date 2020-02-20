@@ -1,19 +1,30 @@
 import React from "react";
 import "./list-view.styles.scss";
-import FavoriteItem from '../favorite-item/favorite-item.component';
-import { connect } from 'react-redux';
-import { toogleItem } from '../../redux/favorite/favorite.actions';
+import ListItem from "../list-item/list-item.component";
+import { connect } from "react-redux";
+import { selectMovieCollections } from "../../redux/movie/movie.selector";
+import { createStructuredSelector } from "reselect";
 
-const FavoriteView = ({ toogleFavorite }) => {
+const FavoriteView = ({ collections }) => {
   return (
     <div className="list-view-container">
-      <FavoriteItem toogleFavorite={toogleFavorite} dataId="testId" />
+      {collections &&
+        collections.map((data,key) => {
+          return (
+            <ListItem
+              key={key}
+              dataId={data.imdbID}
+              title={data.Title}
+              image={data.Poster}
+            />
+          );
+        })}
     </div>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  toogleFavorite: item => dispatch(toogleItem(item))
-})
+const mapStateToProps = createStructuredSelector({
+  collections: selectMovieCollections
+});
 
-export default connect(null, mapDispatchToProps)(FavoriteView);
+export default connect(mapStateToProps)(FavoriteView);

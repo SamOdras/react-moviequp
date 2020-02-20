@@ -1,13 +1,28 @@
 import React from "react";
 import Frame from "../../components/frame/frame.component";
-import MovieListView from '../../components/list-view/list-view.component';
+import MovieListView from "../../components/list-view/list-view.container";
+import MovieDetails from "../../components/movie-details/movie-details.component";
 
-const MovieList = props => {
+import { Route } from "react-router-dom";
+import { getMovie } from "../../redux/movie/movie.actions";
+import { connect } from "react-redux";
+
+const MovieList = ({ match, fetchMovieStart }) => {
+  React.useEffect(() => {
+    fetchMovieStart();
+  }, [fetchMovieStart]);
   return (
     <Frame>
-      <MovieListView/>
+      <Route path={`${match.path}`} exact component={MovieListView} />
+      <Route
+        path={`${match.path}/movie/details/:movieId`}
+        exact
+        component={MovieDetails}
+      />
     </Frame>
   );
 };
-
-export default MovieList;
+const mapDispatchToProps = dispatch => ({
+  fetchMovieStart: () => dispatch(getMovie())
+});
+export default connect(null, mapDispatchToProps)(MovieList);
