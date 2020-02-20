@@ -47,7 +47,7 @@ class FavoriteItem extends React.Component {
         </Link>
         <Typography className="movie-card__title">
           <span style={{ fontSize: "16px" }}>
-            {`${splitTitle[0]} ${splitTitle[1]} ${splitTitle[2]} ...` ||
+            {`${splitTitle[0]} ${splitTitle[1]} ${splitTitle[2] === undefined ? '' : splitTitle[2]}......` ||
               "Star Wars Battle Front"}
           </span>
           <FavoriteButton

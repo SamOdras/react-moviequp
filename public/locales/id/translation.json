@@ -1,0 +1,26 @@
+{
+  "Search Movie":{
+    "1":"Cari Film"
+  },
+  "Home":{
+    "1":"Beranda"
+  },
+  "Favorite":{
+    "1":"Daftar Suka"
+  },
+  "Logout":{
+    "1":"Keluar"
+  },
+  "Login":{
+    "1":"Masuk"
+  },
+  "SignIn to continue":{
+    "1":"Masuk untuk melanjutkan"
+  },
+  "Username":{
+    "1":"Nama"
+  },
+  "Password":{
+    "1":"Kata Sandi"
+  }
+}

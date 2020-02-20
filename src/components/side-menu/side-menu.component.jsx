@@ -7,8 +7,10 @@ import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectTotalFavorite } from '../../redux/favorite/favorite.selector';
-
-const SideMenu = ({ history, totalFavorite }) => {
+import { useTranslation } from "react-i18next";
+const SideMenu = (props) => {
+  const { history, totalFavorite } = props;
+  const { t } = useTranslation();
   const renderButton = () => {
     return (
       <ButtonBase
@@ -18,7 +20,7 @@ const SideMenu = ({ history, totalFavorite }) => {
       >
         <Icon className="side-menu--item__icon">exit_to_app</Icon>
         <Typography variant="h5" className="side-menu--item__title">
-          Logout
+          {t('Logout.1')}
         </Typography>
       </ButtonBase>
     );
@@ -38,7 +40,7 @@ const SideMenu = ({ history, totalFavorite }) => {
         >
           <Dashboard className="side-menu--item__icon" />
           <Typography variant="h5" className="side-menu--item__title">
-            Home
+            {t('Home.1')}
           </Typography>
         </ButtonBase>
       </Link>
@@ -53,7 +55,7 @@ const SideMenu = ({ history, totalFavorite }) => {
             <FavoriteBorder className="side-menu--item__icon" />
           </Badge>
           <Typography variant="h5" className="side-menu--item__title">
-            Favorite
+            {t('Favorite.1')}
           </Typography>
         </ButtonBase>
       </Link>

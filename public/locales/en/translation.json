@@ -1,0 +1,26 @@
+{
+  "Search Movie":{
+    "1":"Search Movie"
+  },
+  "Home":{
+    "1":"Home"
+  },
+  "Favorite":{
+    "1":"Favorite"
+  },
+  "Logout":{
+    "1":"Logout"
+  },
+  "Login":{
+    "1":"Login"
+  },
+  "SignIn to continue":{
+    "1":"SignIn to continue"
+  },
+  "Username":{
+    "1":"Username"
+  },
+  "Password":{
+    "1":"Password"
+  }
+}

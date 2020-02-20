@@ -48,7 +48,7 @@ const LoginAuth = ({ handleSubmit }) => {
           color="primary"
           style={{ marginTop: 30 }}
         >
-          Masuk
+          Login
         </Button>
       </form>
     </FrameAuth>

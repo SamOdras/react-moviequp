@@ -1,16 +1,17 @@
 import React from "react";
 import "./header.styles.scss";
 import MenuIcon from "@material-ui/icons/Menu";
-
+import { useTranslation } from "react-i18next";
 import {
   Typography,
   IconButton,
   Icon,
   useScrollTrigger,
   Toolbar,
-  AppBar
+  AppBar,
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
+import SwitchLanguage from '../switch-language/switch-language.component';
 
 const ElevationScroll = props => {
   const { children, window } = props;
@@ -24,56 +25,57 @@ const ElevationScroll = props => {
     elevation: trigger ? 4 : 0
   });
 };
-class Header extends React.Component {
-  state = {
-    searchKeyword:''
-  }
-  handleSubmit = () => {
-    const { history } = this.props; 
-    history.push(`/movie/search/${this.state.searchKeyword}`)
+const Header = ({ history }) => {
+  const [searchKeyword, setSearchKeyword] = React.useState("");
+  const { t } = useTranslation();
+
+  const handleSubmit = () => {
+    history.push(`/movie/search/${searchKeyword}`);
     window.location.reload();
-  }
-  handleChange = (e) => {
-    this.setState({
-      searchKeyword: e.target.value
-    })
-  }
-  render() {
-    return (
-      <div>
-        <ElevationScroll>
-          <AppBar position="fixed" className="app-bar" elevation={1}>
-            <Toolbar className="app-bar__toolbar">
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <div className="app-bar__title">
-                <Typography
-                  color="inherit"
-                  variant="h6"
-                  style={{ cursor: "pointer" }}
+  };
+  const handleChange = e => {
+    setSearchKeyword(e.target.value);
+  };
+  return (
+    <div>
+      <ElevationScroll>
+        <AppBar position="fixed" className="app-bar" elevation={1}>
+          <Toolbar className="app-bar__toolbar">
+            <IconButton edge="start" color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <div className="app-bar__title">
+              <Typography
+                color="inherit"
+                variant="h6"
+                style={{ cursor: "pointer" }}
+              >
+                MovieQup
+              </Typography>
+            </div>
+            <div className="app-bar__search-field">
+              <div className="banner-input">
+                <IconButton
+                  onClick={handleSubmit}
+                  className="banner-input__icon"
                 >
-                  MovieQup
-                </Typography>
+                  <Icon>search</Icon>
+                </IconButton>
+                <input
+                  className="banner-input__field"
+                  placeholder={t('Search Movie.1')}
+                  onChange={handleChange}
+                />
               </div>
-              <div className="app-bar__search-field">
-                <div className="banner-input">
-                  <IconButton onClick={this.handleSubmit} className="banner-input__icon">
-                    <Icon>search</Icon>
-                  </IconButton>
-                  <input
-                    className="banner-input__field"
-                    placeholder="Cari Movie"
-                    onChange={this.handleChange}
-                  />
-                </div>
-              </div>
-            </Toolbar>
-          </AppBar>
-        </ElevationScroll>
-      </div>
-    );
-  }
-}
+            </div>
+            <div className="app-bar__switch-language">
+              <SwitchLanguage/>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+    </div>
+  );
+};
 const HOC = withRouter(Header);
 export default HOC;
