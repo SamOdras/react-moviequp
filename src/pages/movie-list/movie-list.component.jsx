@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import { getMovie } from "../../redux/movie/movie.actions";
 import { connect } from "react-redux";
 
+
 const MovieList = ({ match, fetchMovieStart }) => {
   React.useEffect(() => {
     fetchMovieStart();
@@ -19,4 +20,5 @@ const MovieList = ({ match, fetchMovieStart }) => {
 const mapDispatchToProps = dispatch => ({
   fetchMovieStart: () => dispatch(getMovie())
 });
+
 export default connect(null, mapDispatchToProps)(MovieList);

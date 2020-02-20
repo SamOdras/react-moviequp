@@ -37,7 +37,7 @@ class FavoriteItem extends React.Component {
     const { title, image, dataId } = this.props;
     const splitTitle = title.split(" ");
     return (
-      <div className="movie-card">
+      <div className={image.length < 50 ? 'skip-card' : 'movie-card'}>
         <Link to={`/movie/details/${dataId}`} style={{textDecoration: 'none',width:'0%', padding:'0px', margin:'0px' }}>
         <img
           src={image || Banner}

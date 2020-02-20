@@ -1,30 +1,81 @@
 import React from "react";
 import "./list-view.styles.scss";
 import ListItem from "../list-item/list-item.component";
-import { connect } from "react-redux";
-import { selectMovieCollections } from "../../redux/movie/movie.selector";
-import { createStructuredSelector } from "reselect";
+import NoDataDisplay from "../no-data/no-data.component";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "../../components/spinner/spinner.component";
 
-const FavoriteView = ({ collections }) => {
-  return (
-    <div className="list-view-container">
-      {collections &&
-        collections.map((data,key) => {
-          return (
-            <ListItem
-              key={key}
-              dataId={data.imdbID}
-              title={data.Title}
-              image={data.Poster}
-            />
-          );
-        })}
-    </div>
-  );
-};
+import { connect } from "react-redux";
+import {
+  selectMovieCollections,
+  getLimitMovieItem
+} from "../../redux/movie/movie.selector";
+
+import { withRouter } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import { getInfinteMovie } from "../../redux/movie/movie.actions";
+
+class FavoriteView extends React.Component {
+  state = {
+    hasMore: true,
+    pagination: 1
+  };
+
+  renderNoData = () => {
+    const { collections } = this.props;
+    if (!collections) return <NoDataDisplay />;
+  };
+
+  fetchMoreData = () => {
+    const { collections, limitMovie, fetchInfiniteData, match } = this.props;
+    if (collections.length >= limitMovie) this.setState({ hasMore: false });
+    this.setState({ pagination: this.state.pagination + 1 });
+    fetchInfiniteData(this.state.pagination, match.params.movieKeyword);
+  };
+  render() {
+    const { collections } = this.props;
+    return (
+      <div>
+        <InfiniteScroll
+          className="list-view-container"
+          dataLength={collections.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.hasMore}
+          loader={<Spinner />}
+          endMessage={
+            <div
+              className="end-text"
+            >
+              <p>
+                <b>Yay! You have seen it all</b>
+              </p>
+            </div>
+          }
+        >
+          {collections.map((data, key) => {
+            return (
+              <ListItem
+                key={key}
+                dataId={data.imdbID}
+                title={data.Title}
+                image={data.Poster}
+              />
+            );
+          })}
+        </InfiniteScroll>
+
+        {this.renderNoData()}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = createStructuredSelector({
-  collections: selectMovieCollections
+  collections: selectMovieCollections,
+  limitMovie: getLimitMovieItem
 });
-
-export default connect(mapStateToProps)(FavoriteView);
+const mapDispatchToProps = dispatch => ({
+  fetchInfiniteData: page => dispatch(getInfinteMovie(page))
+});
+const HOC = withRouter(FavoriteView);
+export default connect(mapStateToProps, mapDispatchToProps)(HOC);

@@ -1,10 +1,13 @@
 import Types from './movie.types';
+import { infiniteMovieItem } from './movie.utils';
 
 const INITIAL_STATE = {
-  collections: null,
+  collections: [],
+  collectionsSearch: null,
   collectionDetail: null,
   isFetching: false,
-  errorMessage: undefined
+  errorMessage: undefined,
+  totalMovie: null,
 };
 
 const shopReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +18,13 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         isFetching: true
       }
     case Types.FETCH_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        collections: infiniteMovieItem(state.collections, action.payload.Search),
+        totalMovie: action.payload.totalResults,
+      }
+    case Types.SEARCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
