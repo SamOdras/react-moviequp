@@ -8,8 +8,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectTotalFavorite } from '../../redux/favorite/favorite.selector';
 import { useTranslation } from "react-i18next";
+import { logoutMovie } from '../../redux/auth/auth.actions';
 const SideMenu = (props) => {
-  const { history, totalFavorite } = props;
+  const { history, totalFavorite, logoutMovie } = props;
   const { t } = useTranslation();
   const renderButton = () => {
     return (
@@ -26,8 +27,8 @@ const SideMenu = (props) => {
     );
   };
   const signOut = () => {
-    history.push("/");
-    window.location.reload();
+    logoutMovie();
+    history.push("/login");
   };
   return (
     <div className="side-menu">
@@ -68,4 +69,4 @@ const HOC = withRouter(SideMenu);
 const mapStateToProps = createStructuredSelector({
   totalFavorite: selectTotalFavorite
 })
-export default connect(mapStateToProps)(HOC);
+export default connect(mapStateToProps, { logoutMovie })(HOC);

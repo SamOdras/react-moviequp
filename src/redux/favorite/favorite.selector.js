@@ -6,7 +6,6 @@ export const selectFavoriteItem = createSelector(
   [selectFavorite],
   favorite => favorite.favoriteItem,
 );
-
 export const selectCheckedFavorite = createSelector(
   [selectFavoriteItem],
   favorite => {

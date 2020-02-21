@@ -4,6 +4,7 @@ import { toogleItemToFavorite, checkItemFavorite } from './favorite.utils';
 const INITIAL_STATE = {
   favoriteItem: [],
   checkItem : undefined,
+  checkSwitch: true,
 };
 
 const favoriteReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +19,11 @@ const favoriteReducer = (state = INITIAL_STATE, action) => {
         ...state,
         checkItem: checkItemFavorite(state.favoriteItem, action.payload),
       }
+      case Types.CHECK_SWITCH:
+        return {
+          ...state,
+          checkSwitch: action.payload 
+        }
     default:
       return state;
   }

@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist';
 
 import favoriteItem from './favorite/favorite.reducer';
 import movieItem from './movie/movie.reducer';
+import authItem from './auth/auth.reducer';
 
 const persistConfig = {
   key: 'root',
@@ -15,6 +16,7 @@ const appReducer =  combineReducers({
   form: FormReducer,
   favorite:favoriteItem,
   movie: movieItem,
+  auth: authItem,
 })
 
 export default persistReducer(persistConfig, appReducer);

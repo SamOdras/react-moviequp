@@ -1,13 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Switch, FormControlLabel } from "@material-ui/core";
+import { checkSwitch } from '../../redux/favorite/favorite.actions';
+import { connect } from 'react-redux';
 
-const SwitchLanguage = () => {
-  const [checked, setChecked] = React.useState(true);
+const SwitchLanguage = ({ isChecked, checkSwitch }) => {
   const { i18n } = useTranslation();
   const handleSwitch = e => {
-    setChecked(e.target.checked);
-    if (e.target.checked === true) {
+    checkSwitch(!isChecked);
+    if (isChecked === false) {
       i18n.changeLanguage("en");
     } else {
       i18n.changeLanguage("id");
@@ -19,7 +20,7 @@ const SwitchLanguage = () => {
       labelPlacement="end"
       control={
         <Switch
-          checked={checked}
+          checked={isChecked}
           onChange={handleSwitch}
           value="checkedB"
           color="primary"
@@ -31,4 +32,7 @@ const SwitchLanguage = () => {
   );
 };
 
-export default SwitchLanguage;
+const mapStateToProps = state => ({
+  isChecked: state.favorite.checkSwitch
+})
+export default connect(mapStateToProps,{ checkSwitch })(SwitchLanguage);
