@@ -55,6 +55,7 @@ export const getInfinteMovie = (paginate = 1, keyword = 'most') => async dispatc
     });
 };
 export const searchMovieList = searchKeyWord => async dispatch => {
+  dispatch(clearArray());
   dispatch(fetchStart());
   fetch(`${movieAPI}s=${searchKeyWord}`)
     .then(response => {

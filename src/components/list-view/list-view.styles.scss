@@ -1,8 +1,14 @@
+@import '../../responsive.styles.scss';
+
 .list-view-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   padding: 50px 0px 10px 100px;
+  @include respond(phone){
+    padding: 30px 0px 0px 0px;
+    justify-content: center;
+  }
 }
 .end-text{
   width: 100%;

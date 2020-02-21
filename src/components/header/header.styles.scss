@@ -1,9 +1,20 @@
+@import '../../responsive.styles.scss';
 .app-bar {
   display: flex;
   flex-wrap: wrap;
   background-color: white !important;
   color: grey !important;
   justify-content: space-between;
+  &__title{
+    @include respond(tab-port){
+      width: 0;
+      visibility: hidden;
+      height: 0;
+    }
+  }
+  &__switch-language{
+    margin-left: auto;
+  }
   &__toolbar {
     display: flex;
   }
@@ -17,6 +28,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include respond(tab-port){
+      margin-left: 20px;
+    }
+    @include respond(phone){
+      width: 30%;
+    }
     .banner-input {
       width: 550px;
       height: 40px;

@@ -1,6 +1,5 @@
 import React from "react";
 import "./header.styles.scss";
-import MenuIcon from "@material-ui/icons/Menu";
 import { useTranslation } from "react-i18next";
 import {
   Typography,
@@ -12,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 import SwitchLanguage from '../switch-language/switch-language.component';
+import Drawer from '../drawer/drawer.component';
 
 const ElevationScroll = props => {
   const { children, window } = props;
@@ -31,7 +31,7 @@ const Header = ({ history }) => {
 
   const handleSubmit = () => {
     history.push(`/movie/search/${searchKeyword}`);
-    window.location.reload();
+    // window.location.reload();
   };
   const handleChange = e => {
     setSearchKeyword(e.target.value);
@@ -41,9 +41,7 @@ const Header = ({ history }) => {
       <ElevationScroll>
         <AppBar position="fixed" className="app-bar" elevation={10}>
           <Toolbar className="app-bar__toolbar">
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
+            <Drawer/>
             <div className="app-bar__title">
               <Typography
                 color="inherit"

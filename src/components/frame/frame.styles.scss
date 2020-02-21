@@ -1,14 +1,29 @@
+@import '../../responsive.styles.scss';
 .front-page-content{
   display: flex;
   padding: 65px 50px 0 0px;
+  @include respond(phone){
+    padding-right: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
   &__side-menu{
     height: 70vh;
     width: 90px;
     background-color: white;
     position: fixed;
+    @include respond(phone){
+      width: 0px;
+      height: 0px;
+      visibility: hidden;
+    }
   }
   &__main-menu{
     width: 100%;
     margin-left: 100px;
+    @include respond(phone){
+      margin-left: 0px;
+    }
   }
 }
