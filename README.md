@@ -1,26 +1,35 @@
-## Lesson-9
+# Cara menjalankan applikasi
 
-Creating our firebase database and adding the firebase library into our code. Add google sign in and authentication into our application. 
+NOTE : Dibutuhkan node.js untuk menjalankan program ini
 
-# How to fork and clone
+## 1. Install dependencies
 
-One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!
+Sebelum menjalankan program, perlu untuk install package terlebih dahulu, buka directory file lalu jalankan `npm install` jika memakai npm atau `yarn install` jika memakai yarn
 
-You can see the fork button in the top right corner of every GitHub project; click it and a copy of the project will be added to your GitHub profile under the same name as the original project.
+## 2. Start program
 
-![alt text](https://i.ibb.co/1YN7SJ6/Screen-Shot-2019-07-01-at-2-02-40-AM.png "image to fork button")
+Setelah package terinstall, jalankan perintah `npm start` atau `yarn add`
 
-After forking the project, simply clone it the way you would from the new forked project in your own GitHub repository and you can commit and push to it freely!
+# Struktur Folder 
 
+## 1. api
+Berisi tentang baseURL rest api
 
-# After you fork and clone:
+## 2. assets 
+tempat untuk menyimpan gambar
 
-## Install dependencies
+## 3. components
+Berisi tampilan halaman yang sudah dipecah menjadi beberapa komponen tersendiri 
 
-In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
+## 4. pages 
+Tempat menyimpan halaman
 
-## Set your firebase config
+## 5. Redux
+Tempat business logic dan state management
 
-Remember to replace the `config` variable in your `firebase.utils.js` with your own config object from the firebase dashboard! Navigate to the project settings and scroll down to the config code. Copy the object in the code and replace the variable in your cloned code.
+## 6. App.js
+Tempat route 
 
-![alt text](https://i.ibb.co/6ywMkBf/Screen-Shot-2019-07-01-at-11-35-02-AM.png "image to firebase config")
+## 7. index.js
+Tempat konfigurasi file 
+
