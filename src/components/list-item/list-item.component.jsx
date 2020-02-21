@@ -1,6 +1,5 @@
 import React from "react";
 import "./list-item.styles.scss";
-import Banner from "../../assets/Poster-1.jpg";
 
 import { Typography } from "@material-ui/core";
 
@@ -10,6 +9,8 @@ import FavoriteButton from "../favorite-button/favorite-button.component";
 import { toogleItem } from "../../redux/favorite/favorite.actions";
 import { createStructuredSelector } from "reselect";
 import { selectFavoriteItem } from "../../redux/favorite/favorite.selector";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 class FavoriteItem extends React.Component {
   state = {
@@ -37,18 +38,28 @@ class FavoriteItem extends React.Component {
     const { title, image, dataId } = this.props;
     const splitTitle = title.split(" ");
     return (
-      <div className={image.length < 50 ? 'skip-card' : 'movie-card'}>
-        <Link to={`/movie/details/${dataId}`} style={{textDecoration: 'none',width:'0%', padding:'0px', margin:'0px' }}>
-        <img
-          src={image || Banner}
-          alt=""
-          className="movie-card__banner"
-        />
+      <div className={image.length < 50 ? "skip-card" : "movie-card"}>
+        <Link
+          to={`/movie/details/${dataId}`}
+          style={{
+            textDecoration: "none",
+            width: "0%",
+            padding: "0px",
+            margin: "0px"
+          }}
+        >
+          <LazyLoadImage
+            alt="My Image"
+            src={image}
+            className="movie-card__banner"
+            effect="blur"
+          />
         </Link>
         <Typography className="movie-card__title">
           <span style={{ fontSize: "16px" }}>
-            {`${splitTitle[0]} ${splitTitle[1]} ${splitTitle[2] === undefined ? '' : splitTitle[2]}......` ||
-              "Star Wars Battle Front"}
+            {`${splitTitle[0]} ${splitTitle[1]} ${
+              splitTitle[2] === undefined ? "" : splitTitle[2]
+            }......` || "Star Wars Battle Front"}
           </span>
           <FavoriteButton
             handleFavorite={this.handleClick}

@@ -9,7 +9,7 @@
     height: 350px;
     width: 250px;
     border-radius: 10px;
-    transition: all .2s;
+    transition: all .2s !important;
     z-index: 10;
     cursor: pointer;
     &:hover{
