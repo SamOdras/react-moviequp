@@ -17,6 +17,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: true
       }
+    case Types.CLEAR_ARRAY:
+      return {
+        ...state,
+        collections: [],
+      }
     case Types.FETCH_SUCCESS:
       return {
         ...state,

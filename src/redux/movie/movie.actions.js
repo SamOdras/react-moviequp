@@ -5,6 +5,9 @@ const movieAPI = "http://www.omdbapi.com/?apikey=e3fad09a&";
 const fetchStart = () => ({
   type: Types.FETCH_START
 });
+const clearArray = () => ({
+  type: Types.CLEAR_ARRAY,
+})
 const fetchSuccess = movieItem => ({
   type: Types.FETCH_SUCCESS,
   payload: movieItem
@@ -27,6 +30,7 @@ export const getSearchKeyword = searchKeyword => ({
 });
 export const getMovie = () => async dispatch => {
   dispatch(fetchStart());
+  dispatch(clearArray());
   fetch(`${movieAPI}s=most`)
     .then(response => {
       return response.json();

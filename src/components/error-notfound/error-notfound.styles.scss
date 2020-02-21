@@ -1,11 +1,11 @@
-.no-data-overlay{
+.not-found-overlay{
   height: 60vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  .no-data-wrapper{
+  .not-found-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,9 +14,11 @@
       width: 400px; 
       height: 400px;
       margin-bottom: 20px;
+      margin-top: 150px;
     }
     &__title{
       color: grey;
+      font-size: 20px;
     }
   }
 }

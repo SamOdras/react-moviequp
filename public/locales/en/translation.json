@@ -22,5 +22,11 @@
   },
   "Password":{
     "1":"Password"
+  },
+  "Page Not Found | 404":{
+    "1":"Page Not Found | 404"
+  },
+  "Data Not Found":{
+    "1":"Data Not Found"
   }
 }

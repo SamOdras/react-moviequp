@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import Frame from "../../components/frame/frame.component";
-import Spinner from '../../components/spinner';
+import Spinner from '../../components/spinner/spinner.component';
 
 import { Route } from "react-router-dom";
 import { getMovie } from "../../redux/movie/movie.actions";
@@ -11,7 +11,6 @@ const MovieList = ({ match, fetchMovieStart }) => {
   React.useEffect(() => {
     fetchMovieStart();
   }, [fetchMovieStart]);
-  
   return (
     <Frame>
       <Suspense fallback={<Spinner/>}>

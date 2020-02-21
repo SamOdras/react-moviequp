@@ -1,33 +1,40 @@
-import React from 'react';
-import './error-boundary.styles.scss';
+import React from "react";
+import "./error-boundary.styles.scss";
+import { Typography } from "@material-ui/core";
 
-class ErrorBoundary extends React.Component{
+class ErrorBoundary extends React.Component {
   constructor() {
     super();
     this.state = {
-      hasErrored: false,
-    }
+      hasErrored: false
+    };
   }
-  static getDerivedStateFromError(error){
-    return { 
+  static getDerivedStateFromError(error) {
+    return {
       hasErrored: true
-    }
+    };
   }
-  componentDidCatch(error, info){
+  componentDidCatch(error, info) {
     console.log(error);
   }
-  render(){
-    if(this.state.hasErrored){
-      return(
-        <div className="error-image-overlay">
-          <div className="error-image-container"/>
-          <h2 className="error-image-text">
-            Sorry this page is broken
-          </h2>
+  render() {
+    if (this.state.hasErrored) {
+      return (
+        <div className="boundary-overlay">
+          <div className="boundary-wrapper">
+            <img
+              src="https://i.imgur.com/FOeYt4E.png"
+              alt="Glasses"
+              className="boundary-wrapper__banner"
+            />
+            <Typography variant="body1" className="boundary-wrapper__title">
+              Sory :( This page is broken
+            </Typography>
+          </div>
         </div>
       );
     }
-    return this.props.children
+    return this.props.children;
   }
 }
 

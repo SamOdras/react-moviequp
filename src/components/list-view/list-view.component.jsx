@@ -20,10 +20,9 @@ class FavoriteView extends React.Component {
     hasMore: true,
     pagination: 1
   };
-
   renderNoData = () => {
     const { collections } = this.props;
-    if (!collections) return <NoDataDisplay />;
+    if (collections === undefined) return <NoDataDisplay />;
   };
 
   fetchMoreData = () => {
@@ -36,33 +35,33 @@ class FavoriteView extends React.Component {
     const { collections } = this.props;
     return (
       <div>
-        <InfiniteScroll
-          className="list-view-container"
-          dataLength={collections.length}
-          next={this.fetchMoreData}
-          hasMore={this.state.hasMore}
-          loader={<Spinner />}
-          endMessage={
-            <div
-              className="end-text"
-            >
-              <p>
-                <b>Yay! You have seen it all</b>
-              </p>
-            </div>
-          }
-        >
-          {collections.map((data, key) => {
-            return (
-              <ListItem
-                key={key}
-                dataId={data.imdbID}
-                title={data.Title}
-                image={data.Poster}
-              />
-            );
-          })}
-        </InfiniteScroll>
+        {collections && (
+          <InfiniteScroll
+            className="list-view-container"
+            dataLength={collections.length}
+            next={this.fetchMoreData}
+            hasMore={this.state.hasMore}
+            loader={<Spinner />}
+            endMessage={
+              <div className="end-text">
+                <p>
+                  <b>Yay! You have seen it all</b>
+                </p>
+              </div>
+            }
+          >
+            {collections.map((data, key) => {
+              return (
+                <ListItem
+                  key={key}
+                  dataId={data.imdbID}
+                  title={data.Title}
+                  image={data.Poster}
+                />
+              );
+            })}
+          </InfiniteScroll>
+        )}
 
         {this.renderNoData()}
       </div>

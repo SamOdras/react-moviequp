@@ -22,5 +22,11 @@
   },
   "Password":{
     "1":"Kata Sandi"
+  },
+  "Page Not Found | 404":{
+    "1":"Halaman Tidak Ditemukan | 404"
+  },
+  "Data Not Found":{
+    "1":"Data tidak ditemukan !"
   }
 }

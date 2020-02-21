@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import "./App.styles.scss";
-import { Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "./history";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
@@ -20,25 +20,30 @@ const MovieDetailPage = lazy(() =>
 const MovieSearchPage = lazy(() =>
   import("./pages/movie-search/movie-search.component")
 );
-
+const PageNotFound = lazy(() =>
+  import("./components/error-notfound/error-notfound.component")
+);
 const App = () => {
   return (
     <Router history={history}>
       <ErrorBoundary>
         <Suspense fallback={<Spinner />}>
-          <Route path="/" exact component={MovieListPage} />
-          <Route path="/movie/favorite" exact component={MovieFavorite} />
-          <Route
-            path="/movie/details/:movieId"
-            exact
-            component={MovieDetailPage}
-          />
-          <Route
-            path="/movie/search/:movieKeyword"
-            exact
-            component={MovieSearchPage}
-          />
-          <Route path="/login" exact component={MovieLogin} />
+          <Switch>
+            <Route path="/" exact component={MovieListPage} />
+            <Route path="/movie/favorite" exact component={MovieFavorite} />
+            <Route
+              path="/movie/details/:movieId"
+              exact
+              component={MovieDetailPage}
+            />
+            <Route
+              path="/movie/search/:movieKeyword"
+              exact
+              component={MovieSearchPage}
+            />
+            <Route path="/login" exact component={MovieLogin} />
+            <Route exact path="*" component={PageNotFound} />
+          </Switch>
         </Suspense>
       </ErrorBoundary>
     </Router>
