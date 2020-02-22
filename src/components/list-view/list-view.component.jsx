@@ -15,7 +15,7 @@ import { withRouter } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { getInfinteMovie } from "../../redux/movie/movie.actions";
 
-class FavoriteView extends React.Component {
+class FavoriteView extends React.PureComponent {
   state = {
     hasMore: true,
     pagination: 1
@@ -33,6 +33,7 @@ class FavoriteView extends React.Component {
   };
   render() {
     const { collections } = this.props;
+    console.log('RENDER LIST VIEW')
     return (
       <div>
         {collections && (
@@ -57,6 +58,7 @@ class FavoriteView extends React.Component {
                   dataId={data.imdbID}
                   title={data.Title}
                   image={data.Poster}
+                  {...this.props}
                 />
               );
             })}

@@ -2,21 +2,14 @@ import React from "react";
 import { FormControlLabel, Checkbox } from "@material-ui/core";
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import {
-  selectFavoriteItem
-} from "../../redux/favorite/favorite.selector";
 
-class FavoriteButton extends React.Component  {
+class FavoriteButton extends React.PureComponent  {
 
   handleCheck = (e) => {
     this.props.handleFavorite(e.target.checked);
   }
-
   render(){
     const {  className, color, checkData } = this.props;
-    console.log('RENDERING');
     return (
       <FormControlLabel
         style={{ marginLeft: "auto" }}
@@ -34,8 +27,5 @@ class FavoriteButton extends React.Component  {
   }
 };
 
-const mapStateToProps = createStructuredSelector({
-  collections: selectFavoriteItem,
-});
 
-export default connect(mapStateToProps)(FavoriteButton);
+export default FavoriteButton;

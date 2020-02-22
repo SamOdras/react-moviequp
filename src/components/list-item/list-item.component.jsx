@@ -7,12 +7,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import FavoriteButton from "../favorite-button/favorite-button.component";
 import { toogleItem } from "../../redux/favorite/favorite.actions";
-import { createStructuredSelector } from "reselect";
-import { selectFavoriteItem } from "../../redux/favorite/favorite.selector";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-class FavoriteItem extends React.Component {
+class FavoriteItem extends React.PureComponent {
   state = {
     check: false
   };
@@ -37,6 +35,7 @@ class FavoriteItem extends React.Component {
   render() {
     const { title, image, dataId } = this.props;
     const splitTitle = title.split(" ");
+    console.log('RENDERING LIST ITEM')
     return (
       <div className={image.length < 50 ? "skip-card" : "movie-card"}>
         <Link
@@ -63,7 +62,6 @@ class FavoriteItem extends React.Component {
           </span>
           <FavoriteButton
             handleFavorite={this.handleClick}
-            id={dataId}
             checkData={this.state.check}
           />
         </Typography>
@@ -75,7 +73,4 @@ class FavoriteItem extends React.Component {
 const mapDispatchToProps = dispatch => ({
   toogleFavorite: item => dispatch(toogleItem(item))
 });
-const mapStateToProps = createStructuredSelector({
-  collections: selectFavoriteItem
-});
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteItem);
+export default connect(null, mapDispatchToProps)(FavoriteItem);
