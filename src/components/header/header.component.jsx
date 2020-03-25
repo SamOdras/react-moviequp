@@ -7,11 +7,11 @@ import {
   Icon,
   useScrollTrigger,
   Toolbar,
-  AppBar,
+  AppBar
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
-import SwitchLanguage from '../switch-language/switch-language.component';
-import Drawer from '../drawer/drawer.component';
+import SwitchLanguage from "../switch-language/switch-language.component";
+import Drawer from "../drawer/drawer.component";
 
 const ElevationScroll = props => {
   const { children, window } = props;
@@ -29,7 +29,8 @@ const Header = ({ history }) => {
   const [searchKeyword, setSearchKeyword] = React.useState("");
   const { t } = useTranslation();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     history.push(`/movie/search/${searchKeyword}`);
     // window.location.reload();
   };
@@ -41,7 +42,7 @@ const Header = ({ history }) => {
       <ElevationScroll>
         <AppBar position="fixed" className="app-bar" elevation={10}>
           <Toolbar className="app-bar__toolbar">
-            <Drawer/>
+            <Drawer />
             <div className="app-bar__title">
               <Typography
                 color="inherit"
@@ -52,22 +53,25 @@ const Header = ({ history }) => {
               </Typography>
             </div>
             <div className="app-bar__search-field">
-              <div className="banner-input">
-                <IconButton
-                  onClick={handleSubmit}
-                  className="banner-input__icon"
-                >
-                  <Icon>search</Icon>
-                </IconButton>
-                <input
-                  className="banner-input__field"
-                  placeholder={t('Search Movie.1')}
-                  onChange={handleChange}
-                />
-              </div>
+              <form action="">
+                <div className="banner-input">
+                  <IconButton
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="banner-input__icon"
+                  >
+                    <Icon>search</Icon>
+                  </IconButton>
+                  <input
+                    className="banner-input__field"
+                    placeholder={t("Search Movie.1")}
+                    onChange={handleChange}
+                  />
+                </div>
+              </form>
             </div>
             <div className="app-bar__switch-language">
-              <SwitchLanguage/>
+              <SwitchLanguage />
             </div>
           </Toolbar>
         </AppBar>

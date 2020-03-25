@@ -10,14 +10,14 @@ import { connect } from "react-redux";
 import SwitchLanguage from "../../components/switch-language/switch-language.component";
 
 class FrameAuth extends React.Component {
-  onChecked = () => {
-    const { history } = this.props;
-    const isAuth = localStorage.getItem("qupas");
-    if (isAuth) history.push("/");
-  };
-  componentDidMount() {
-    this.onChecked();
-  }
+  // onChecked = () => {
+  //   const { history } = this.props;
+  //   const isAuth = localStorage.getItem("qupas");
+  //   if (isAuth) history.push("/");
+  // };
+  // componentDidMount() {
+  //   this.onChecked();
+  // }
   render() {
     const { isError } = this.props;
     return (

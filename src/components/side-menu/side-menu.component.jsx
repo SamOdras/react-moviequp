@@ -1,6 +1,7 @@
 import React from "react";
 import "./side-menu.styles.scss";
-import { Typography, Icon, ButtonBase, Badge } from "@material-ui/core";
+import { Typography, ButtonBase, Badge } from "@material-ui/core";
+// import { Typography, Icon, ButtonBase, Badge } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Dashboard, FavoriteBorder } from "@material-ui/icons";
 import { withRouter } from "react-router-dom";
@@ -10,26 +11,27 @@ import { selectTotalFavorite } from '../../redux/favorite/favorite.selector';
 import { useTranslation } from "react-i18next";
 import { logoutMovie } from '../../redux/auth/auth.actions';
 const SideMenu = (props) => {
-  const { history, totalFavorite, logoutMovie } = props;
+  const { history, totalFavorite } = props;
+  // const { history, totalFavorite, logoutMovie } = props;
   const { t } = useTranslation();
-  const renderButton = () => {
-    return (
-      <ButtonBase
-        onClick={signOut}
-        disableRipple={true}
-        className="side-menu--item"
-      >
-        <Icon className="side-menu--item__icon">exit_to_app</Icon>
-        <Typography variant="h5" className="side-menu--item__title">
-          {t('Logout.1')}
-        </Typography>
-      </ButtonBase>
-    );
-  };
-  const signOut = () => {
-    logoutMovie();
-    history.push("/login");
-  };
+  // const renderButton = () => {
+  //   return (
+  //     <ButtonBase
+  //       onClick={signOut}
+  //       disableRipple={true}
+  //       className="side-menu--item"
+  //     >
+  //       <Icon className="side-menu--item__icon">exit_to_app</Icon>
+  //       <Typography variant="h5" className="side-menu--item__title">
+  //         {t('Logout.1')}
+  //       </Typography>
+  //     </ButtonBase>
+  //   );
+  // };
+  // const signOut = () => {
+  //   logoutMovie();
+  //   history.push("/login");
+  // };
   return (
     <div className="side-menu">
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -60,7 +62,7 @@ const SideMenu = (props) => {
           </Typography>
         </ButtonBase>
       </Link>
-      {renderButton()}
+      {/* {renderButton()} */}
     </div>
   );
 };
