@@ -14,6 +14,7 @@ import {
 import { withRouter } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { getInfinteMovie } from "../../redux/movie/movie.actions";
+import { selectFavoriteItem } from "../../redux/favorite/favorite.selector";
 
 class FavoriteView extends React.PureComponent {
   state = {
@@ -73,7 +74,8 @@ class FavoriteView extends React.PureComponent {
 
 const mapStateToProps = createStructuredSelector({
   collections: selectMovieCollections,
-  limitMovie: getLimitMovieItem
+  limitMovie: getLimitMovieItem,
+  favouriteMovie: selectFavoriteItem,
 });
 const mapDispatchToProps = dispatch => ({
   fetchInfiniteData: page => dispatch(getInfinteMovie(page))

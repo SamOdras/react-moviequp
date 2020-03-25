@@ -28,8 +28,10 @@ class FavoriteItem extends React.PureComponent {
     this.checkingItem();
   }
   checkingItem = () => {
-    const { collections, dataId } = this.props;
-    const check = collections.some(item => item.id === dataId);
+    const { favouriteMovie, dataId } = this.props;
+    console.log(dataId);
+    const check = favouriteMovie.some(item => item.id === dataId);
+    console.log(check);
     this.setState({ check });
   };
   render() {
