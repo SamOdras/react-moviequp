@@ -82,12 +82,6 @@ const TemporaryDrawer = ({ history, logoutMovie, totalFavorite }) => {
           </ListItemIcon>
           <ListItemText primary={t("Favorite.1")} />
         </ListItem>
-        <ListItem button onClick={signOut}>
-          <ListItemIcon>
-            <ExitToApp />
-          </ListItemIcon>
-          <ListItemText primary={t("Logout.1")} />
-        </ListItem>
       </List>
     </div>
   );
