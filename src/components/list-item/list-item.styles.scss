@@ -3,8 +3,10 @@
   display: grid;
   justify-items: start;
   width: 235px;
+  margin-bottom: 30px;
   @include respond(phone){
-    width: 220px;
+    width: 200px;
+    justify-items: start;
   }
   &__banner{
     height: 320px;
@@ -32,7 +34,7 @@
     grid-template-columns: max-content min-content;
     align-items: center;
     @include respond(phone){
-      font-size: 10px !important;
+      grid-template-columns: 160px min-content;      
     }
     // z-index: 1;
     // display: flex;

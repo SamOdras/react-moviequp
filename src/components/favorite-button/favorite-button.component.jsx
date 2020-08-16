@@ -12,7 +12,7 @@ class FavoriteButton extends React.PureComponent  {
     const {  className, color, checkData } = this.props;
     return (
       <FormControlLabel
-        style={{ marginLeft: "auto" }}
+      style={{ justifyContent:'flex-end'}}
         className={className || ''}
         control={
           <Checkbox

@@ -1,25 +1,14 @@
 @import '../../responsive.styles.scss';
 
 .list-view-container{
-  display: grid;
-  grid-template-columns: repeat(4, min-content);
-  grid-row-gap: 30px;
-  justify-content: center;
-  padding-top: 30px;
-  @include respond(tab-land){
-    grid-template-columns: repeat(3, min-content);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 50px 0px 10px 100px;
   @include respond(phone){
-    grid-template-columns: repeat(2, min-content);
+    padding: 30px 0px 0px 0px;
+    justify-content: center;
   }
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: flex-start;
-  // padding: 50px 0px 10px 100px;
-  // @include respond(phone){
-  //   padding: 30px 0px 0px 0px;
-  //   justify-content: center;
-  // }
 }
 .end-text{
   width: 100%;

@@ -62,7 +62,6 @@ export const searchMovieList = searchKeyWord => async dispatch => {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       dispatch(searchSuccess(data.Search));
     })
     .catch(err => {
@@ -76,7 +75,6 @@ export const getMovieDetails = movieId => async dispatch => {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       dispatch(fetchDetailSuccess(data));
     })
     .catch(err => {

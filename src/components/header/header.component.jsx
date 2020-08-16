@@ -43,7 +43,7 @@ const Header = ({ history }) => {
         <AppBar position="fixed" className="app-bar" elevation={10}>
           <Toolbar className="app-bar__toolbar">
             <Drawer />
-            <div className="app-bar__title">
+            <div className="app-bar__title" onClick={() => history.push('/')}>
               <Typography
                 color="inherit"
                 variant="h6"

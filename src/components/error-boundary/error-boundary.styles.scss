@@ -1,6 +1,8 @@
+@import '../../responsive.styles.scss';
+
 .boundary-overlay{
   height: 60vh;
-  width: 100%;
+  width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +17,11 @@
       height: 400px;
       margin-bottom: 20px;
       margin-top: 150px;
+
+      @include respond(phone){
+        width: 300px;
+        height: 300px;
+      }
     }
     &__title{
       color: grey;

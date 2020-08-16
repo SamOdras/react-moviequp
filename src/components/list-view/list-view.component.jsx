@@ -34,7 +34,6 @@ class FavoriteView extends React.PureComponent {
   };
   render() {
     const { collections } = this.props;
-    console.log('RENDER LIST VIEW')
     return (
       <div>
         {collections && (

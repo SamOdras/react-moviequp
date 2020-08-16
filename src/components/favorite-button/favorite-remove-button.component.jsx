@@ -5,7 +5,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 const RemoveFavorite = ({ handleClick, style }) => {
   return (
     <React.Fragment>
-      <IconButton onClick={handleClick} style={style}>
+      <IconButton onClick={handleClick} style={{ justifyContent:'flex-end'}}>
         <DeleteIcon />
       </IconButton>
     </React.Fragment>

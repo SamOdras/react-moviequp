@@ -29,15 +29,12 @@ class FavoriteItem extends React.PureComponent {
   }
   checkingItem = () => {
     const { favouriteMovie, dataId } = this.props;
-    console.log(dataId);
     const check = favouriteMovie.some(item => item.id === dataId);
-    console.log(check);
     this.setState({ check });
   };
   render() {
     const { title, image, dataId } = this.props;
     const splitTitle = title.split(" ");
-    console.log('RENDERING LIST ITEM')
     return (
       <div className={image.length < 50 ? "skip-card" : "movie-card"}>
         <Link

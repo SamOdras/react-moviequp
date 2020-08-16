@@ -1,18 +1,18 @@
-@import '../../responsive.styles.scss';
+@import "../../responsive.styles.scss";
 .app-bar {
   display: flex;
   flex-wrap: wrap;
   background-color: white !important;
   color: grey !important;
   justify-content: space-between;
-  &__title{
-    @include respond(tab-port){
+  &__title {
+    @include respond(tab-port) {
       width: 0;
       visibility: hidden;
       height: 0;
     }
   }
-  &__switch-language{
+  &__switch-language {
     margin-left: auto;
   }
   &__toolbar {
@@ -29,21 +29,22 @@
     justify-content: center;
     align-items: center;
     padding-top: 2px;
-    @include respond(tab-port){
-      margin-left: 20px;
-    }
-    @include respond(phone){
-      width: 40%;
+    transition: all .2s;
+    @include respond(phone) {
+      width: 25%;
     }
     .banner-input {
       width: 550px;
       height: 40px;
       display: flex;
-      background-color: #F1F3F4;
+      background-color: #f1f3f4;
       border-radius: 20px;
       display: flex;
       align-items: center;
       padding-left: 20px;
+      @include respond(phone){
+        height: 30px;
+      }
       &__field {
         width: 70%;
         height: 50%;
@@ -51,10 +52,13 @@
         border: none;
         background-color: transparent;
         font-size: 17px;
-        font-weight: bold;
         color: grey;
-        &::placeholder {
-          font-weight: bold;
+        transition: all .2s;
+        @include respond(phone) {
+          font-weight: normal;
+          &::placeholder {
+            font-size: 14px;
+          }
         }
       }
     }

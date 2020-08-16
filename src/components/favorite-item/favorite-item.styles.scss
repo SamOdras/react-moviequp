@@ -1,17 +1,23 @@
+@import '../../responsive.styles.scss';
 .movie-card{
-  display: flex;
-  flex-direction: column;
-  margin-right: 2px;
-  margin-bottom: 20px;
-  position: relative;
-  width: 250px;
+  display: grid;
+  justify-items: start;
+  width: 235px;
+  @include respond(phone){
+    width: 200px;
+    margin-bottom: 30px;
+  }
   &__banner{
-    height: 350px;
-    width: 250px;
+    height: 320px;
+    width: 220px;
     border-radius: 10px;
-    transition: all .2s;
+    transition: all .2s !important;
     z-index: 10;
     cursor: pointer;
+    @include respond(phone){
+      height: 300px;
+      width: 200px;
+    }
     &:hover{
       transform: translateY(-5px);
       box-shadow: 0 5px 10px 5px rgba(0,0,0,.3);
@@ -23,12 +29,18 @@
     }
   }
   &__title{
-    z-index: 1;
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
     align-items: center;
-    padding-right: 5px !important;
-    &:last-child{
-      margin-left: 10px;
+    @include respond(phone){
+      grid-template-columns: 160px min-content;      
     }
   }
+}
+
+.skip-card{
+  width: 0px !important;
+  height: 0px !important;
+  visibility: hidden;
 }
