@@ -6,14 +6,6 @@ import SideMenu from "../side-menu/side-menu.component";
 import { withRouter } from 'react-router-dom';
 
 class Frame extends React.Component {
-  // onChecked = () => {
-  //   const { history } = this.props;
-  //   const isAuth = localStorage.getItem('qupas');
-  //   if(!isAuth) history.push('/login');
-  // }
-  // componentDidMount(){
-  //   this.onChecked();
-  // }
   render() {
     return (
       <React.Fragment>
