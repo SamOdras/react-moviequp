@@ -7,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Badge from "@material-ui/core/Badge";
-import { Dashboard, FavoriteBorder, ExitToApp, Menu } from "@material-ui/icons";
+import { Dashboard, FavoriteBorder,  Menu } from "@material-ui/icons";
 
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -43,10 +43,10 @@ const TemporaryDrawer = ({ history, logoutMovie, totalFavorite }) => {
   const movePage = route => {
     history.push(route);
   };
-  const signOut = () => {
-    logoutMovie();
-    history.push("/login");
-  };
+  // const signOut = () => {
+  //   logoutMovie();
+  //   history.push("/login");
+  // };
   const sideList = side => (
     <div
       className={classes.list}

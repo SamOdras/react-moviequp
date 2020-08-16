@@ -1,17 +1,22 @@
+@import '../../responsive.styles.scss';
 .movie-card{
-  display: flex;
-  flex-direction: column;
-  margin-right: 2px;
-  margin-bottom: 20px;
-  position: relative;
-  width: 250px;
+  display: grid;
+  justify-items: start;
+  width: 235px;
+  @include respond(phone){
+    width: 220px;
+  }
   &__banner{
-    height: 350px;
-    width: 250px;
+    height: 320px;
+    width: 220px;
     border-radius: 10px;
     transition: all .2s !important;
     z-index: 10;
     cursor: pointer;
+    @include respond(phone){
+      height: 300px;
+      width: 200px;
+    }
     &:hover{
       transform: translateY(-5px);
       box-shadow: 0 5px 10px 5px rgba(0,0,0,.3);
@@ -23,13 +28,19 @@
     }
   }
   &__title{
-    z-index: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: max-content min-content;
     align-items: center;
-    width: 105%;
-    &:last-child{
-      margin-left: 10px;
+    @include respond(phone){
+      font-size: 10px !important;
     }
+    // z-index: 1;
+    // display: flex;
+    // align-items: center;
+    // width: 105%;
+    // &:last-child{
+    //   margin-left: 10px;
+    // }
   }
 }
 
